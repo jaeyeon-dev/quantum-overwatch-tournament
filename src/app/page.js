@@ -227,27 +227,61 @@ export default function Home() {
                     </div>
                   </div>
                   
-                  {/* 팀 세부 정보 확장 영역 (팀원 리스트 + 티어 / 모스트 챔피언) */}
+                  {/* [팀 정보 탭] - 간격 및 정렬 구조 일정하게 칼정렬 업그레이드 */}
+        {activeTab === 'teams' && (
+          <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {(teamsData || []).map((team, idx) => {
+              const isTeamExpanded = expandedTeamIdx === idx;
+              return (
+                <div key={idx} className="bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden h-fit">
+                  {/* 팀 카드 상단 */}
+                  <div 
+                    onClick={() => toggleTeamExpand(idx)}
+                    className={`p-5 flex justify-between items-center cursor-pointer hover:bg-slate-750 transition-all ${isTeamExpanded ? 'bg-slate-750 border-b border-slate-700' : ''}`}
+                  >
+                    <h3 className="text-lg font-bold text-indigo-300">🛡️ {team.teamName}</h3>
+                    <div className="flex items-center space-x-3">
+                      <span className="text-xs bg-slate-900/60 text-slate-300 px-2.5 py-1 rounded-md">
+                        {(team.members || []).length}인조
+                      </span>
+                      <span className="text-slate-400 text-sm">
+                        {isTeamExpanded ? '▲' : '▼'}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  {/* 팀 세부 정보 확장 영역 (칼정렬 grid 테이블 구조 적용) */}
                   <div className={`transition-all duration-300 ease-in-out ${isTeamExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-                    <div className="p-4 space-y-2.5 bg-slate-900/30">
+                    <div className="p-4 space-y-2 bg-slate-900/30">
                       {(team.members || []).map((member, mIdx) => (
-                        <div key={mIdx} className="bg-slate-900/60 p-3.5 rounded-xl border border-slate-700/40 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                          {/* 팀원 이름 및 포지션 */}
-                          <div className="flex items-center space-x-3">
-                            <span className="font-bold text-slate-100">{member.name}</span>
-                            <span className="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700/50">{member.role}</span>
+                        <div key={mIdx} className="bg-slate-900/60 p-3 rounded-xl border border-slate-700/40 grid grid-cols-1 sm:grid-cols-12 items-center gap-2 sm:gap-4 text-center sm:text-left">
+                          
+                          {/* 1. 이름 영역 (12칸 중 3칸 차지) */}
+                          <div className="sm:col-span-3 font-bold text-slate-100 truncate">
+                            {member.name}
                           </div>
-                          {/* 티어 및 모스트 정보 */}
-                          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-400">
-                            <span className="text-indigo-400 font-medium">✨ {member.currentTier || '티어 정보 없음'}</span>
-                            <div className="flex gap-1">
-                              {member.mostChampions?.map((champ, cIdx) => (
-                                <span key={cIdx} className="bg-slate-800 px-1.5 py-0.5 rounded text-slate-300 text-[11px]">
-                                  {champ}
-                                </span>
-                              ))}
-                            </div>
+
+                          {/* 2. 포지션 영역 (12칸 중 3칸 차지) */}
+                          <div className="sm:col-span-3 flex justify-center sm:justify-start">
+                            <span className="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700/50 block w-fit truncate">
+                              {member.role}
+                            </span>
                           </div>
+
+                          {/* 3. 현재 티어 영역 (12칸 중 3칸 차지) */}
+                          <div className="sm:col-span-3 text-xs text-indigo-400 font-semibold truncate">
+                            ✨ {member.currentTier || '정보 없음'}
+                          </div>
+
+                          {/* 4. 모스트 챔피언 영역 (12칸 중 3칸 차지) */}
+                          <div className="sm:col-span-3 flex flex-wrap gap-1 justify-center sm:justify-start">
+                            {member.mostChampions?.map((champ, cIdx) => (
+                              <span key={cIdx} className="bg-slate-800 px-1.5 py-0.5 rounded text-slate-300 text-[11px] whitespace-nowrap">
+                                {champ}
+                              </span>
+                            )) || <span className="text-xs text-slate-500">정보 없음</span>}
+                          </div>
+
                         </div>
                       ))}
                     </div>
