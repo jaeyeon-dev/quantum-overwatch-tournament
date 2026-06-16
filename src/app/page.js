@@ -7,11 +7,13 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState('about');
   const [openTeamId, setOpenTeamId] = useState(null);
 
-  const { teams, matches } = fullData;
+  // 데이터 안정성 확보 (파일이 비어있거나 깨졌을 때를 대비한 방어 코드)
+  const teams = fullData?.teams || [];
+  const matches = fullData?.matches || [];
 
-  // 전체 참가자 명단 추출 추출 (참가자 정보 탭용)
+  // 전체 참가자 명단 추출 (참가자 정보 탭용)
   const allPlayers = teams.flatMap(team => 
-    team.members.map(member => ({ ...member, teamName: team.teamName }))
+    (team.members || []).map(member => ({ ...member, teamName: team.teamName }))
   );
 
   return (
@@ -64,7 +66,7 @@ export default function Home() {
         
         {/* 1. 대회 소개 */}
         {activeTab === 'about' && (
-          <div className="space-y-6 animate-fade-in">
+          <div className="space-y-6">
             <div className="bg-gradient-to-br from-indigo-900/40 to-slate-900 border border-indigo-500/20 rounded-3xl p-8 text-center shadow-xl">
               <span className="text-5xl block mb-4">🚀</span>
               <h2 className="text-2xl font-black text-white mb-3">제1회 양자배 오버워치 토너먼트</h2>
@@ -108,7 +110,7 @@ export default function Home() {
                   </button>
                   {isOpen && (
                     <div className="border-t border-slate-800 bg-slate-950/30 px-6 py-2 divide-y divide-slate-850">
-                      {team.members.map((member, idx) => (
+                      {(team.members || []).map((member, idx) => (
                         <div key={idx} className="py-3 flex justify-between items-center text-xs sm:text-sm">
                           <div className="flex items-center space-x-3">
                             <span className="font-bold text-slate-200">{member.name}</span>
@@ -190,7 +192,7 @@ export default function Home() {
 
                   <div>
                     <span className={`inline-block px-2.5 py-1 rounded-full text-xs font-bold ${
-                      match.status === '종0료' || match.status === '종료'
+                      match.status === '종료'
                         ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' 
                         : 'bg-indigo-500/10 text-indigo-400 border border-indigo-500/20'
                     }`}>
