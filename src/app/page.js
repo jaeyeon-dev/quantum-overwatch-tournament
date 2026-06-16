@@ -1,15 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import teamsData from './teams.json';
+import fullData from './teams.json';
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState('teams');
+  const [activeTab, setActiveTab] = useState('about');
   const [openTeamId, setOpenTeamId] = useState(null);
 
-  const toggleTeam = (id) => {
-    setOpenTeamId(openTeamId === id ? null : id);
-  };
+  const { teams, matches } = fullData;
+
+  // 전체 참가자 명단 추출 추출 (참가자 정보 탭용)
+  const allPlayers = teams.flatMap(team => 
+    team.members.map(member => ({ ...member, teamName: team.teamName }))
+  );
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-indigo-500 selection:text-white">
@@ -17,91 +20,103 @@ export default function Home() {
       <header className="relative border-b border-slate-800 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-5xl mx-auto px-6 py-5 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="flex items-center space-x-3">
-            <span className="text-3xl">🔥</span>
+            <span className="text-3xl">🏆</span>
             <div>
               <h1 className="text-2xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
                 제1회 양자배 옵치 대회
               </h1>
-              <p className="text-xs text-slate-400 mt-0.5">Quantum Overwatch Tournament Dashboard</p>
+              <p className="text-xs text-slate-400 mt-0.5">Quantum Overwatch Tournament Hub</p>
             </div>
           </div>
-          <div className="text-right sm:text-right text-center">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-              📅 2026. 07. 04 ~ 07. 05
-            </span>
-          </div>
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+            📅 2026. 07. 04 ~ 07. 05
+          </span>
         </div>
       </header>
 
-      {/* 네비게이션 탭 */}
-      <nav className="flex justify-center space-x-2 my-10 px-4">
-        {[
-          { id: 'teams', label: '🛡️ 참가 팀 정보' },
-          { id: 'about', label: '📢 대회 가이드' }
-        ].map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 cursor-pointer ${
-              activeTab === tab.id 
-                ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30 border border-indigo-500' 
-                : 'bg-slate-900 text-slate-400 border border-slate-800 hover:bg-slate-850 hover:text-slate-200'
-            }`}
-          >
-            {tab.label}
-          </button>
-        ))}
+      {/* 5개 네비게이션 탭 라인업 */}
+      <nav className="max-w-5xl mx-auto my-8 px-4">
+        <div className="flex flex-wrap justify-center gap-2 bg-slate-900/60 p-2 rounded-2xl border border-slate-800">
+          {[
+            { id: 'about', label: '📢 대회 소개' },
+            { id: 'teams', label: '🛡️ 팀 정보' },
+            { id: 'players', label: '👤 참가자 정보' },
+            { id: 'schedule', label: '📊 경기 일정/결과' },
+            { id: 'guide', label: '📝 대회 가이드' }
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
+                activeTab === tab.id 
+                  ? 'bg-indigo-600 text-white shadow-md border border-indigo-500' 
+                  : 'text-slate-400 hover:bg-slate-800 hover:text-slate-200'
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
       </nav>
 
-      {/* 본문 콘텐츠 */}
+      {/* 본문 콘텐츠 허브 */}
       <main className="max-w-4xl mx-auto px-6 pb-24">
         
-        {/* TAB: 팀 정보 */}
+        {/* 1. 대회 소개 */}
+        {activeTab === 'about' && (
+          <div className="space-y-6 animate-fade-in">
+            <div className="bg-gradient-to-br from-indigo-900/40 to-slate-900 border border-indigo-500/20 rounded-3xl p-8 text-center shadow-xl">
+              <span className="text-5xl block mb-4">🚀</span>
+              <h2 className="text-2xl font-black text-white mb-3">제1회 양자배 오버워치 토너먼트</h2>
+              <p className="text-slate-300 max-w-xl mx-auto text-sm leading-relaxed">
+                최고의 자리를 두고 펼쳐지는 치열한 팀 파이트! 양자 물리처럼 예측 불가능하고 강력한 오버워치 플레이어들의 연대기가 지금 펼쳐집니다.
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8 max-w-2xl mx-auto">
+                <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-800">
+                  <p className="text-xs text-slate-500 font-bold">총 상금</p>
+                  <p className="text-lg font-extrabold text-amber-400 mt-0.5">치킨 & 명예</p>
+                </div>
+                <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-800">
+                  <p className="text-xs text-slate-500 font-bold">참가 규모</p>
+                  <p className="text-lg font-extrabold text-indigo-400 mt-0.5">{teams.length}개 팀 빌드</p>
+                </div>
+                <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-800 col-span-2 sm:col-span-1">
+                  <p className="text-xs text-slate-500 font-bold">플랫폼</p>
+                  <p className="text-lg font-extrabold text-purple-400 mt-0.5">PC / 오버워치 2</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* 2. 팀 정보 */}
         {activeTab === 'teams' && (
           <div className="space-y-4">
-            <h2 className="text-lg font-bold text-slate-400 mb-2 px-1">참가팀 라인업 ({teamsData.length})</h2>
-            
-            {teamsData.map((team) => {
+            <h2 className="text-sm font-bold text-slate-500 uppercase tracking-wider px-1">출전 팀 스쿼드 ({teams.length})</h2>
+            {teams.map((team) => {
               const isOpen = openTeamId === team.id;
               return (
-                <div 
-                  key={team.id} 
-                  className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl transition-all duration-200 hover:border-indigo-500/40"
-                >
-                  {/* 팀 카드 헤더 버튼 */}
-                  <button 
-                    onClick={() => toggleTeam(team.id)}
-                    className="w-full text-left px-6 py-5 flex justify-between items-center gap-4 hover:bg-slate-850/50 cursor-pointer transition-colors"
-                  >
+                <div key={team.id} className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-md hover:border-slate-700 transition-all">
+                  <button onClick={() => setOpenTeamId(isOpen ? null : team.id)} className="w-full text-left px-6 py-4.5 flex justify-between items-center cursor-pointer hover:bg-slate-850/30">
                     <div>
-                      <div className="flex items-center gap-2.5">
-                        <span className="text-xl font-black text-indigo-400">#{team.id}</span>
-                        <h3 className="text-lg font-bold text-white tracking-tight">{team.teamName}</h3>
-                      </div>
-                      <p className="text-xs text-slate-400 mt-1">팀장: <span className="text-purple-300 font-medium">{team.captain}</span></p>
+                      <h3 className="text-base font-bold text-white flex items-center gap-2">
+                        <span className="text-indigo-400 font-black">#{team.id}</span> {team.teamName}
+                      </h3>
+                      <p className="text-xs text-slate-400 mt-1">팀 리더: <span className="text-purple-300 font-medium">{team.captain}</span></p>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <span className="text-xs text-slate-500 font-medium hidden sm:inline">{isOpen ? "닫기" : "멤버 보기"}</span>
-                      <span className={`text-sm text-indigo-400 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}>
-                        ▼
-                      </span>
-                    </div>
+                    <span className={`text-xs text-indigo-400 transition-transform ${isOpen ? 'rotate-180' : ''}`}>▼</span>
                   </button>
-
-                  {/* 아코디언 멤버 리스트 */}
                   {isOpen && (
-                    <div className="border-t border-slate-800 bg-slate-950/40 px-6 py-4 divide-y divide-slate-850">
+                    <div className="border-t border-slate-800 bg-slate-950/30 px-6 py-2 divide-y divide-slate-850">
                       {team.members.map((member, idx) => (
-                        <div key={idx} className="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-sm">
+                        <div key={idx} className="py-3 flex justify-between items-center text-xs sm:text-sm">
                           <div className="flex items-center space-x-3">
-                            <span className="font-semibold text-white min-w-[90px]">{member.name}</span>
-                            <span className={`px-2 py-0.5 rounded text-xs font-medium bg-slate-800 text-slate-300`}>
-                              {member.role}
-                            </span>
+                            <span className="font-bold text-slate-200">{member.name}</span>
+                            <span className="px-1.5 py-0.5 rounded text-[11px] font-medium bg-slate-800 text-slate-400">{member.role}</span>
                           </div>
-                          <div className="flex items-center space-x-4 text-xs sm:text-sm">
-                            <span className="text-amber-400 font-medium">✨ {member.tier}</span>
-                            <span className="text-slate-400">모스트: <span className="text-slate-300 font-medium">{member.most}</span></span>
+                          <div className="flex items-center space-x-4 text-xs">
+                            <span className="text-amber-400 font-bold">✨ {member.tier}</span>
+                            <span className="text-slate-500">모스트: <span className="text-slate-300">{member.most}</span></span>
                           </div>
                         </div>
                       ))}
@@ -113,26 +128,99 @@ export default function Home() {
           </div>
         )}
 
-        {/* TAB: 대회 가이드 */}
-        {activeTab === 'about' && (
+        {/* 3. 참가자 정보 */}
+        {activeTab === 'players' && (
+          <div className="space-y-4">
+            <h2 className="text-sm font-bold text-slate-500 uppercase tracking-wider px-1">전체 플레이어 가이드 ({allPlayers.length})</h2>
+            <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs sm:text-sm">
+                  <thead className="bg-slate-950 text-slate-400 border-b border-slate-800 font-bold">
+                    <tr>
+                      <th className="px-6 py-3.5">이름</th>
+                      <th className="px-6 py-3.5">포지션</th>
+                      <th className="px-6 py-3.5">티어</th>
+                      <th className="px-6 py-3.5">소속 팀</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-850">
+                    {allPlayers.map((player, idx) => (
+                      <tr key={idx} className="hover:bg-slate-850/20 transition-colors">
+                        <td className="px-6 py-4 font-bold text-white">{player.name}</td>
+                        <td className="px-6 py-4 text-slate-300">{player.role}</td>
+                        <td className="px-6 py-4 text-amber-400 font-medium">{player.tier}</td>
+                        <td className="px-6 py-4 text-indigo-300 font-medium max-w-[150px] truncate">{player.teamName}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* 4. 경기 일정/결과 */}
+        {activeTab === 'schedule' && (
+          <div className="space-y-4">
+            <h2 className="text-sm font-bold text-slate-500 uppercase tracking-wider px-1">타임라인 및 스코어 보드</h2>
+            <div className="space-y-3">
+              {matches.map((match) => (
+                <div key={match.id} className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-md flex flex-col md:flex-row items-center justify-between gap-4">
+                  <div className="flex flex-col items-center md:items-start">
+                    <span className="text-[11px] font-bold tracking-wider px-2 py-0.5 rounded-md bg-slate-800 text-slate-400 border border-slate-750">
+                      {match.round}
+                    </span>
+                    <span className="text-xs text-slate-500 mt-1.5">{match.time}</span>
+                  </div>
+                  
+                  {/* 스코어보드 UI */}
+                  <div className="flex items-center space-x-6 my-2 md:my-0">
+                    <div className="text-right min-w-[120px]">
+                      <p className={`text-sm font-bold ${match.winner === match.teamA ? 'text-indigo-400 font-black' : 'text-slate-300'}`}>{match.teamA}</p>
+                    </div>
+                    <div className="bg-slate-950 px-4 py-2 rounded-xl border border-slate-800 flex items-center gap-3 font-mono font-black text-base">
+                      <span className={match.winner === match.teamA ? 'text-indigo-400' : 'text-slate-500'}>{match.scoreA}</span>
+                      <span className="text-slate-700">:</span>
+                      <span className={match.winner === match.teamB ? 'text-indigo-400' : 'text-slate-500'}>{match.scoreB}</span>
+                    </div>
+                    <div className="text-left min-w-[120px]">
+                      <p className={`text-sm font-bold ${match.winner === match.teamB ? 'text-indigo-400 font-black' : 'text-slate-300'}`}>{match.teamB}</p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <span className={`inline-block px-2.5 py-1 rounded-full text-xs font-bold ${
+                      match.status === '종0료' || match.status === '종료'
+                        ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' 
+                        : 'bg-indigo-500/10 text-indigo-400 border border-indigo-500/20'
+                    }`}>
+                      ● {match.status}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* 5. 대회 가이드 */}
+        {activeTab === 'guide' && (
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-xl space-y-6">
             <div>
-              <h2 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
-                <span className="text-indigo-400">■</span> 대회 기본 개요
+              <h2 className="text-base font-bold text-white mb-2 flex items-center gap-2">
+                <span className="text-indigo-400">■</span> 매치 운영 프로세스
               </h2>
-              <p className="text-sm text-slate-400 leading-relaxed pl-4">
-                본 대회는 오버워치 2 경쟁전 룰을 기반으로 진행되는 커뮤니티 토너먼트입니다. 
-                모든 팀은 공정한 티어 밸런스를 맞추어 구성되었으며, 예선 조별 리그 후 본선 토너먼트 방식으로 최종 우승팀을 가립니다.
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed pl-4">
+                본 대회는 오버워치 2 사용자 지정 대전 기능을 사용하여 전 경기 5대 5 역할 고정 매치업으로 운영됩니다. 전장 픽 및 밴 구조는 경기 당일 디스코드를 통해 공지됩니다.
               </p>
             </div>
             <div className="border-t border-slate-800 pt-6">
-              <h2 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
-                <span className="text-purple-400">■</span> 기본 규칙
+              <h2 className="text-base font-bold text-white mb-2 flex items-center gap-2">
+                <span className="text-purple-400">■</span> 패널티 규칙
               </h2>
-              <ul className="list-disc list-inside text-sm text-slate-400 space-y-1.5 pl-4">
-                <li>모든 경기는 사용자 지정 방(대회 표준 설정)에서 진행됩니다.</li>
-                <li>무승부 발생 시 쟁탈 전장에서 단판 승부로 결정합니다.</li>
-                <li>비속어 사용 및 비매너 플레이 적발 시 경고 처리가 부여될 수 있습니다.</li>
+              <ul className="list-disc list-inside text-xs sm:text-sm text-slate-400 space-y-1.5 pl-4">
+                <li>경기 시작 시각 기준 10분 지각 시 해당 세트 기권패(0:2) 누적.</li>
+                <li>타 팀원에 대한 인게임 악의적 도발 혹은 모욕 행위 시 몰수패 처리 가능.</li>
               </ul>
             </div>
           </div>
