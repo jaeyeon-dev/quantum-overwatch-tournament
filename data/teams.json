@@ -8,7 +8,7 @@
         "role": "돌격 (Tank)",
         "highestTier": "마스터",
         "currentTier": "다이아몬드",
-        "mostChampions": ["디바", "윈스턴", "시그마"]
+        "mostChampions": ["디바", "윈스턴", "시그마","겐지"]
       },
       {
         "id": 2,
