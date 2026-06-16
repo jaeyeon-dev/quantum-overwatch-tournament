@@ -208,24 +208,40 @@ export default function Home() {
             {/* 안전장치 팁 적용 */}
             {(scheduleData || []).map((match, idx) => (
               <div key={idx} className="bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div className="text-sm text-slate-400">
+                
+                {/* 왼쪽: 라운드 및 날짜 (모바일에서는 상단, PC에서는 왼쪽 고정) */}
+                <div className="text-sm text-slate-400 md:min-w-[180px] text-center md:text-left">
                   <span className="font-bold text-indigo-400 mr-2">[{match.round}]</span>
                   {match.date}
                 </div>
-                <div className="flex items-center space-x-6 justify-center my-2 md:my-0">
-                  <span className="font-bold text-lg">{match.teamA}</span>
-                  <span className="bg-slate-900 px-4 py-1.5 rounded-lg font-mono text-xl tracking-wider text-indigo-300">
+                
+                {/* 가운데: 완벽한 정중앙 스코어보드 UI */}
+                <div className="flex-1 flex items-center justify-center w-full my-2 md:my-0">
+                  {/* A팀 명 (오른쪽 정렬로 스코어와 밀착) */}
+                  <div className="flex-1 text-right pr-4 md:pr-6">
+                    <span className="font-bold text-base md:text-lg block truncate">{match.teamA}</span>
+                  </div>
+                  
+                  {/* 스코어 박스 (항상 정중앙 유지) */}
+                  <div className="bg-slate-900 px-5 py-1.5 rounded-lg font-mono text-xl tracking-wider text-indigo-300 font-bold min-w-[90px] text-center shrink-0 shadow-inner border border-slate-700/50">
                     {match.status === '종료' ? `${match.scoreA} : ${match.scoreB}` : 'VS'}
-                  </span>
-                  <span className="font-bold text-lg">{match.teamB}</span>
+                  </div>
+                  
+                  {/* B팀 명 (왼쪽 정렬로 스코어와 밀착) */}
+                  <div className="flex-1 text-left pl-4 md:pl-6">
+                    <span className="font-bold text-base md:text-lg block truncate">{match.teamB}</span>
+                  </div>
                 </div>
-                <div className="text-right">
-                  <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-                    match.status === '종료' ? 'bg-emerald-500/10 text-emerald-400' : 'bg-amber-500/10 text-amber-400'
+                
+                {/* 오른쪽: 상태 표시 배지 (모바일에서는 하단, PC에서는 오른쪽 고정) */}
+                <div className="md:min-w-[100px] text-center md:text-right">
+                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${
+                    match.status === '종료' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
                   }`}>
                     {match.status}
                   </span>
                 </div>
+
               </div>
             ))}
           </section>
