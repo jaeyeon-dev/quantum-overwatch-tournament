@@ -1,0 +1,44 @@
+[
+  {
+    "teamName": "양자 가속기",
+    "members": [
+      {
+        "id": 1,
+        "name": "DvaMaster",
+        "role": "돌격 (Tank)",
+        "highestTier": "마스터",
+        "currentTier": "다이아몬드",
+        "mostChampions": ["디바", "윈스턴", "시그마"]
+      },
+      {
+        "id": 2,
+        "name": "GenjiGod",
+        "role": "공격 (DPS)",
+        "highestTier": "다이아몬드",
+        "currentTier": "플래티넘",
+        "mostChampions": ["겐지", "트레이서", "에코"]
+      }
+    ]
+  },
+  {
+    "teamName": "시그마의 중력 붕괴",
+    "members": [
+      {
+        "id": 3,
+        "name": "GravityFlux",
+        "role": "돌격 (Tank)",
+        "highestTier": "그랜드마스터",
+        "currentTier": "마스터",
+        "mostChampions": ["시그마", "라인하르트"]
+      },
+      {
+        "id": 4,
+        "name": "MercyMain",
+        "role": "지원 (Support)",
+        "highestTier": "플래티넘",
+        "currentTier": "플래티넘",
+        "mostChampions": ["메르시", "모이라", "아나"]
+      }
+    ]
+  }
+]
