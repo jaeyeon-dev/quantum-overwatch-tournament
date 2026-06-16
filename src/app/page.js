@@ -64,31 +64,71 @@ export default function Home() {
       {/* 본문 콘텐츠 허브 */}
       <main className="max-w-4xl mx-auto px-6 pb-24">
         
-        {/* 1. 대회 소개 */}
+        <main className="max-w-5xl mx-auto px-6 pb-20">
+        
+        {/* [대회 소개 탭] */}
         {activeTab === 'about' && (
-          <div className="space-y-6">
-            <div className="bg-gradient-to-br from-indigo-900/40 to-slate-900 border border-indigo-500/20 rounded-3xl p-8 text-center shadow-xl">
-              <span className="text-5xl block mb-4">🚀</span>
-              <h2 className="text-2xl font-black text-white mb-3">제1회 양자배 오버워치 토너먼트</h2>
-              <p className="text-slate-300 max-w-xl mx-auto text-sm leading-relaxed">
-                최고의 자리를 두고 펼쳐지는 치열한 팀 파이트! 양자 물리처럼 예측 불가능하고 강력한 오버워치 플레이어들의 연대기가 지금 펼쳐집니다.
-              </p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8 max-w-2xl mx-auto">
-                <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-800">
-                  <p className="text-xs text-slate-500 font-bold">총 상금</p>
-                  <p className="text-lg font-extrabold text-amber-400 mt-0.5">치킨 & 명예</p>
+          <section className="bg-slate-800 p-8 rounded-2xl border border-slate-700 space-y-6">
+            <div>
+              <h2 className="text-xl font-bold mb-2 text-indigo-300">👋 대회 개요</h2>
+              <p className="text-slate-300 leading-relaxed">본 대회는 내부 역량 강화 및 친목 도모를 위한 e스포츠 대회입니다. 공정한 경기 진행을 위해 아래 규칙을 준수해 주세요.</p>
+            </div>
+            <hr className="border-slate-700" />
+            {/* 2. 대회 일정 (새로 추가된 영역) */}
+            <div>
+              <h2 className="text-xl font-bold mb-4 text-indigo-300 flex items-center gap-2">📅 대회 일정</h2>
+              <div className="relative border-l-2 border-indigo-500/30 ml-3 pl-6 space-y-5">
+                
+                {/* 일정 항목 1 */}
+                <div className="relative">
+                  <div className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.8)]"></div>
+                  <div className="text-xs text-indigo-400 font-semibold">6월 21일 (일)</div>
+                  <div className="font-semibold text-slate-200 mt-0.5">참가 신청 마감</div>
                 </div>
-                <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-800">
-                  <p className="text-xs text-slate-500 font-bold">참가 규모</p>
-                  <p className="text-lg font-extrabold text-indigo-400 mt-0.5">{teams.length}개 팀 빌드</p>
+
+                {/* 일정 항목 2 */}
+                <div className="relative">
+                  <div className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.8)]"></div>
+                  <div className="text-xs text-indigo-400 font-semibold">6월 27, 28일 (토,일)</div>
+                  <div className="font-semibold text-slate-200 mt-0.5">모의내전 진행</div>
                 </div>
-                <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-800 col-span-2 sm:col-span-1">
-                  <p className="text-xs text-slate-500 font-bold">플랫폼</p>
-                  <p className="text-lg font-extrabold text-purple-400 mt-0.5">PC / 오버워치 2</p>
+
+                {/* 일정 항목 3 */}
+                <div className="relative">
+                  <div className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div>
+                  <div className="text-xs text-emerald-400 font-semibold">6월 29일 (월)</div>
+                  <div className="font-semibold text-slate-100 mt-0.5">팀장 선별 및 팀원 경매 진행</div>
                 </div>
+
+                {/* 일정 항목 4 */}
+                <div className="relative">
+                  <div className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div>
+                  <div className="text-xs text-emerald-400 font-semibold">7월 4일 (토) 20:00</div>
+                  <div className="font-semibold text-slate-100 mt-0.5">조별예선 및 준결승 경기 진행</div>
+                </div>
+
+                {/* 일정 항목 5 */}
+                <div className="relative">
+                  <div className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div>
+                  <div className="text-xs text-emerald-400 font-semibold">7월 5일 (일) 20:00</div>
+                  <div className="font-semibold text-slate-100 mt-0.5">결승 경기 진행</div>
+                </div>
+
               </div>
             </div>
-          </div>
+            
+            <hr className="border-slate-700" />
+            
+            {/* 3. 상금 구조 */}
+            <div>
+              <h2 className="text-xl font-bold mb-2 text-indigo-300">💰 상금 구조</h2>
+              <ul className="list-disc list-inside text-slate-300 space-y-1">
+                <li><span className="font-medium text-slate-200">1등 팀:</span> 인당 100,000원</li>
+                <li><span className="font-medium text-slate-200">2등 팀:</span> 황금올리브 기프티콘</li>
+                <li><span className="font-medium text-slate-200">3등 팀:</span> 배민 1만원 상품권</li>
+              </ul>
+            </div>
+          </section>
         )}
 
         {/* 2. 팀 정보 */}
