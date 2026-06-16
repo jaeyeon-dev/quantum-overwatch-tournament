@@ -137,7 +137,7 @@ export default function Home() {
           </section>
         )}
 
-        {/* [참가자 정보 탭] */}
+        {/* [참가자 정보 탭] - 괄호 짝 꼬임 버그 완전 수정 완료 */}
         {activeTab === 'players' && (
           <section className="bg-slate-800 p-6 rounded-2xl border border-slate-700">
             <div className="flex justify-between items-center mb-4 border-b border-slate-700 pb-2">
@@ -145,14 +145,11 @@ export default function Home() {
               <span className="text-xs text-slate-400">* 카드를 클릭하면 상세 정보가 열립니다.</span>
             </div>
             <div className="grid grid-cols-1 gap-4">
-              {/* 안전장치 팁 적용: teamsData가 빈 배열이거나 없을 때 에러 방지 */}
               {(teamsData || []).flatMap(team => (team?.members || []).map(member => ({...member, teamName: team.teamName})))
                 .map((player, idx) => {
                   const isExpanded = expandedPlayerId === player.id;
                   return (
                     <div key={player.id || idx} className="border border-slate-700/60 rounded-xl overflow-hidden bg-slate-900/40 transition-all">
-                      
-                      {/* 기본 카드 영역 (클릭하는 곳) */}
                       <div 
                         onClick={() => togglePlayerExpand(player.id)}
                         className={`p-4 flex justify-between items-center cursor-pointer hover:bg-slate-800/60 transition-all ${isExpanded ? 'bg-slate-800/40 border-b border-slate-700' : ''}`}
@@ -173,7 +170,6 @@ export default function Home() {
                         </div>
                       </div>
 
-                      {/* 확장 영역 */}
                       <div className={`transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-60 p-5 bg-slate-900/20' : 'max-h-0 overflow-hidden'}`}>
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
                           <div className="bg-slate-800/50 p-3 rounded-lg border border-slate-700/40">
@@ -196,15 +192,14 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-
                     </div>
                   );
-              ))}
+                })}
             </div>
           </section>
         )}
 
-        {/* [팀 정보 탭] - 구문 에러 및 칼정렬 테이블 구조 완벽 교정 */}
+        {/* [팀 정보 탭] */}
         {activeTab === 'teams' && (
           <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {(teamsData || []).map((team, idx) => {
@@ -233,24 +228,24 @@ export default function Home() {
                       {(team.members || []).map((member, mIdx) => (
                         <div key={mIdx} className="bg-slate-900/60 p-3 rounded-xl border border-slate-700/40 grid grid-cols-1 sm:grid-cols-12 items-center gap-2 sm:gap-4 text-center sm:text-left">
                           
-                          {/* 1. 이름 영역 (3칸) */}
+                          {/* 1. 이름 영역 */}
                           <div className="sm:col-span-3 font-bold text-slate-100 truncate">
                             {member.name}
                           </div>
 
-                          {/* 2. 포지션 영역 (3칸) */}
+                          {/* 2. 포지션 영역 */}
                           <div className="sm:col-span-3 flex justify-center sm:justify-start">
                             <span className="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700/50 block w-fit truncate">
                               {member.role}
                             </span>
                           </div>
 
-                          {/* 3. 현재 티어 영역 (3칸) */}
+                          {/* 3. 현재 티어 영역 */}
                           <div className="sm:col-span-3 text-xs text-indigo-400 font-semibold truncate">
                             ✨ {member.currentTier || '정보 없음'}
                           </div>
 
-                          {/* 4. 모스트 챔피언 영역 (3칸) */}
+                          {/* 4. 모스트 챔피언 영역 */}
                           <div className="sm:col-span-3 flex flex-wrap gap-1 justify-center sm:justify-start">
                             {member.mostChampions?.map((champ, cIdx) => (
                               <span key={cIdx} className="bg-slate-800 px-1.5 py-0.5 rounded text-slate-300 text-[11px] whitespace-nowrap">
@@ -268,6 +263,7 @@ export default function Home() {
             })}
           </section>
         )}
+
         {/* [경기 일정/결과 탭] */}
         {activeTab === 'schedule' && (
           <section className="space-y-4">
