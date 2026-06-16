@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "teamName": "양자 가속기 (Quantum Accelerator)",
+    "captain": "DvaMaster",
+    "members": [
+      { "name": "DvaMaster", "role": "돌격 (Tank)", "tier": "다이아몬드", "most": "디바, 윈스턴" },
+      { "name": "GenjiGod", "role": "공격 (DPS)", "tier": "플래티넘", "most": "겐지, 트레이서" },
+      { "name": "HitscanKing", "role": "공격 (DPS)", "tier": "다이아몬드", "most": "캐서디, 위도우메이커" },
+      { "name": "AnaAmari", "role": "지원 (Support)", "tier": "골드", "most": "아나, 키리코" },
+      { "name": "LucioRun", "role": "지원 (Support)", "tier": "플래티넘", "most": "루시우, 바티스트" }
+    ]
+  },
+  {
+    "id": 2,
+    "teamName": "시그마의 중력 붕괴",
+    "captain": "GravityFlux",
+    "members": [
+      { "name": "GravityFlux", "role": "돌격 (Tank)", "tier": "마스터", "most": "시그마, 라인하르트" },
+      { "name": "PharahFly", "role": "공격 (DPS)", "tier": "골드", "most": "파라, 에코" },
+      { "name": "HanzoMain", "role": "공격 (DPS)", "tier": "플래티넘", "most": "한조, 겐지" },
+      { "name": "MercyMain", "role": "지원 (Support)", "tier": "플래티넘", "most": "메르시, 모이라" },
+      { "name": "ZenHarmony", "role": "지원 (Support)", "tier": "골드", "most": "젠야타, 브리기테" }
+    ]
+  }
+]
