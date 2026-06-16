@@ -30,10 +30,11 @@ export default function Home() {
       {/* 2. 탭 메뉴 버튼 */}
       <nav className="flex justify-center space-x-2 md:space-x-4 my-8 px-4 flex-wrap gap-y-2">
         {[
-          { id: 'about', label: '대회 소개' },
-          { id: 'players', label: '참가자 정보' },
-          { id: 'teams', label: '팀 정보' },
-          { id: 'schedule', label: '경기 일정/결과' }
+          { id: 'about', label: '📢 대회 소개' },
+          { id: 'players', label: '👤 참가자 정보' },
+          { id: 'teams', label: '🛡️ 팀 정보' },
+          { id: 'schedule', label: '📊 경기 일정/결과' },
+          { id: 'guide', label: '📝 대회 가이드' }
         ].map((tab) => (
           <button
             key={tab.id}
