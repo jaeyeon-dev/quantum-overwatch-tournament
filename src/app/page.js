@@ -259,6 +259,28 @@ export default function Home() {
             ))}
           </section>
         )}
+        {/* 5. 대회 가이드 */}
+        {activeTab === 'guide' && (
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-xl space-y-6">
+            <div>
+              <h2 className="text-base font-bold text-white mb-2 flex items-center gap-2">
+                <span className="text-indigo-400">■</span> 매치 운영 프로세스
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed pl-4">
+                본 대회는 오버워치 2 사용자 지정 대전 기능을 사용하여 전 경기 5대 5 역할 고정 매치업으로 운영됩니다. 전장 픽 및 밴 구조는 경기 당일 디스코드를 통해 공지됩니다.
+              </p>
+            </div>
+            <div className="border-t border-slate-800 pt-6">
+              <h2 className="text-base font-bold text-white mb-2 flex items-center gap-2">
+                <span className="text-purple-400">■</span> 패널티 규칙
+              </h2>
+              <ul className="list-disc list-inside text-xs sm:text-sm text-slate-400 space-y-1.5 pl-4">
+                <li>경기 시작 시각 기준 10분 지각 시 해당 세트 기권패(0:2) 누적.</li>
+                <li>타 팀원에 대한 인게임 악의적 도발 혹은 모욕 행위 시 몰수패 처리 가능.</li>
+              </ul>
+            </div>
+          </div>
+        )}
 
       </main>
     </div>
