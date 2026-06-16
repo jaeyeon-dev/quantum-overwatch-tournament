@@ -20,11 +20,23 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white font-sans">
-      {/* 1. 헤더 & 대회 로고 영역 */}
-      <header className="border-b border-slate-800 p-6 flex justify-between items-center max-w-5xl mx-auto">
-        <h1 className="text-2xl font-bold tracking-wider text-indigo-400">🏆 제1회 양자배 옵치 대회</h1>
-        <p className="text-sm text-slate-400">개최일: 2026년 7월 4일 ~ 7월 5일</p>
+    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-indigo-500 selection:text-white">
+      {/* 상단 비주얼 헤더 */}
+      <header className="relative border-b border-slate-800 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
+        <div className="max-w-5xl mx-auto px-6 py-5 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div className="flex items-center space-x-3">
+            <span className="text-3xl">🏆</span>
+            <div>
+              <h1 className="text-2xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
+                제1회 양자배 옵치 대회
+              </h1>
+              <p className="text-xs text-slate-400 mt-0.5">Quantum Overwatch Tournament Hub</p>
+            </div>
+          </div>
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+            📅 2026. 07. 04 ~ 07. 05
+          </span>
+        </div>
       </header>
 
       {/* 2. 탭 메뉴 버튼 */}
