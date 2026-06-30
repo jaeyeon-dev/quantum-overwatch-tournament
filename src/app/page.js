@@ -104,7 +104,7 @@ export default function Home() {
 
                 <div className="relative">
                   <div className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div>
-                  <div className="text-xs text-emerald-400 font-semibold">6월 29일 (월)</div>
+                  <div className="text-xs text-emerald-400 font-semibold">6월 30일 (화) 20:00</div>
                   <div className="font-semibold text-slate-100 mt-0.5">팀장 선별 및 팀원 경매 진행</div>
                 </div>
 
