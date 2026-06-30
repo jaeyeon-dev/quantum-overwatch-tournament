@@ -2,7 +2,7 @@
   "teams": [
     {
       "id": 1,
-      "teamName": "양자 가속기 (Quantum Accelerator)",
+      "teamName": "1팀",
       "captain": "DvaMaster",
       "members": [
         { "name": "DvaMaster", "role": "돌격 (Tank)", "tier": "다이아몬드", "most": "디바, 윈스턴" },
@@ -14,7 +14,19 @@
     },
     {
       "id": 2,
-      "teamName": "시그마의 중력 붕괴",
+      "teamName": "2팀",
+      "captain": "GravityFlux",
+      "members": [
+        { "name": "GravityFlux", "role": "돌격 (Tank)", "tier": "마스터", "most": "시그마, 라인하르트" },
+        { "name": "PharahFly", "role": "공격 (DPS)", "tier": "골드", "most": "파라, 에코" },
+        { "name": "HanzoMain", "role": "공격 (DPS)", "tier": "플래티넘", "most": "한조, 겐지" },
+        { "name": "MercyMain", "role": "지원 (Support)", "tier": "플래티넘", "most": "메르시, 모이라" },
+        { "name": "ZenHarmony", "role": "지원 (Support)", "tier": "골드", "most": "젠야타, 브리기테" }
+      ]
+    },
+    {
+      "id": 3,
+      "teamName": "3팀",
       "captain": "GravityFlux",
       "members": [
         { "name": "GravityFlux", "role": "돌격 (Tank)", "tier": "마스터", "most": "시그마, 라인하르트" },
