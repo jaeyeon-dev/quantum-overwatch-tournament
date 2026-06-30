@@ -1,6 +1,6 @@
 [
   {
-    "teamName": "양자 가속기",
+    "teamName": "1팀",
     "members": [
       {
         "id": 1,
@@ -45,11 +45,11 @@
     ]
   },
   {
-    "teamName": "시그마의 중력 붕괴",
+    "teamName": "2팀",
     "members": [
       {
         "id": 6,
-        "name": "GravityFlux",
+        "name": "6",
         "role": "돌격 (Tank)",
         "highestTier": "그랜드마스터",
         "currentTier": "마스터",
@@ -57,11 +57,170 @@
       },
       {
         "id": 7,
-        "name": "MercyMain",
+        "name": "7",
         "role": "지원 (Support)",
         "highestTier": "플래티넘",
         "currentTier": "플래티넘",
         "mostChampions": ["메르시", "모이라", "아나"]
+      },
+      {
+        "id": 8,
+        "name": "8",
+        "role": "돌격 (Tank)",
+        "highestTier": "그랜드마스터",
+        "currentTier": "마스터",
+        "mostChampions": ["시그마", "라인하르트"]
+      },
+      {
+        "id": 9,
+        "name": "9",
+        "role": "돌격 (Tank)",
+        "highestTier": "그랜드마스터",
+        "currentTier": "마스터",
+        "mostChampions": ["시그마", "라인하르트"]
+      },
+      {
+        "id": 10,
+        "name": "10",
+        "role": "돌격 (Tank)",
+        "highestTier": "그랜드마스터",
+        "currentTier": "마스터",
+        "mostChampions": ["시그마", "라인하르트"]
+      }
+    ]
+  },
+  {
+    "teamName": "3팀",
+    "members": [
+      {
+        "id": 11,
+        "name": "6",
+        "role": "돌격 (Tank)",
+        "highestTier": "그랜드마스터",
+        "currentTier": "마스터",
+        "mostChampions": ["시그마", "라인하르트"]
+      },
+      {
+        "id": 12,
+        "name": "7",
+        "role": "지원 (Support)",
+        "highestTier": "플래티넘",
+        "currentTier": "플래티넘",
+        "mostChampions": ["메르시", "모이라", "아나"]
+      },
+      {
+        "id": 13,
+        "name": "8",
+        "role": "돌격 (Tank)",
+        "highestTier": "그랜드마스터",
+        "currentTier": "마스터",
+        "mostChampions": ["시그마", "라인하르트"]
+      },
+      {
+        "id": 14,
+        "name": "9",
+        "role": "돌격 (Tank)",
+        "highestTier": "그랜드마스터",
+        "currentTier": "마스터",
+        "mostChampions": ["시그마", "라인하르트"]
+      },
+      {
+        "id": 15,
+        "name": "10",
+        "role": "돌격 (Tank)",
+        "highestTier": "그랜드마스터",
+        "currentTier": "마스터",
+        "mostChampions": ["시그마", "라인하르트"]
+      }
+    ]
+  },
+  {
+    "teamName": "4팀",
+    "members": [
+      {
+        "id": 16,
+        "name": "16",
+        "role": "돌격 (Tank)",
+        "highestTier": "그랜드마스터",
+        "currentTier": "마스터",
+        "mostChampions": ["시그마", "라인하르트"]
+      },
+      {
+        "id": 17,
+        "name": "17",
+        "role": "지원 (Support)",
+        "highestTier": "플래티넘",
+        "currentTier": "플래티넘",
+        "mostChampions": ["메르시", "모이라", "아나"]
+      },
+      {
+        "id": 18,
+        "name": "18",
+        "role": "돌격 (Tank)",
+        "highestTier": "그랜드마스터",
+        "currentTier": "마스터",
+        "mostChampions": ["시그마", "라인하르트"]
+      },
+      {
+        "id": 19,
+        "name": "19",
+        "role": "돌격 (Tank)",
+        "highestTier": "그랜드마스터",
+        "currentTier": "마스터",
+        "mostChampions": ["시그마", "라인하르트"]
+      },
+      {
+        "id": 20,
+        "name": "20",
+        "role": "돌격 (Tank)",
+        "highestTier": "그랜드마스터",
+        "currentTier": "마스터",
+        "mostChampions": ["시그마", "라인하르트"]
+      }
+    ]
+  },
+  {
+    "teamName": "5팀",
+    "members": [
+      {
+        "id": 21,
+        "name": "21",
+        "role": "돌격 (Tank)",
+        "highestTier": "그랜드마스터",
+        "currentTier": "마스터",
+        "mostChampions": ["시그마", "라인하르트"]
+      },
+      {
+        "id": 22,
+        "name": "22",
+        "role": "지원 (Support)",
+        "highestTier": "플래티넘",
+        "currentTier": "플래티넘",
+        "mostChampions": ["메르시", "모이라", "아나"]
+      },
+      {
+        "id": 23,
+        "name": "23",
+        "role": "돌격 (Tank)",
+        "highestTier": "그랜드마스터",
+        "currentTier": "마스터",
+        "mostChampions": ["시그마", "라인하르트"]
+      },
+      {
+        "id": 24,
+        "name": "24",
+        "role": "돌격 (Tank)",
+        "highestTier": "그랜드마스터",
+        "currentTier": "마스터",
+        "mostChampions": ["시그마", "라인하르트"]
+      },
+      {
+        "id": 25,
+        "name": "25",
+        "role": "돌격 (Tank)",
+        "highestTier": "그랜드마스터",
+        "currentTier": "마스터",
+        "mostChampions": ["시그마", "라인하르트"]
       }
     ]
   }
