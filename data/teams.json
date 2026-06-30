@@ -17,6 +17,30 @@
         "highestTier": "다이아몬드",
         "currentTier": "플래티넘",
         "mostChampions": ["겐지", "트레이서", "에코"]
+      },
+      {
+        "id": 3,
+        "name": "3",
+        "role": "공격 (DPS)",
+        "highestTier": "다이아몬드",
+        "currentTier": "플래티넘",
+        "mostChampions": ["겐지", "트레이서", "에코"]
+      },
+      {
+        "id": 4,
+        "name": "4",
+        "role": "공격 (DPS)",
+        "highestTier": "다이아몬드",
+        "currentTier": "플래티넘",
+        "mostChampions": ["겐지", "트레이서", "에코"]
+      },
+      {
+        "id": 5,
+        "name": "5",
+        "role": "공격 (DPS)",
+        "highestTier": "다이아몬드",
+        "currentTier": "플래티넘",
+        "mostChampions": ["겐지", "트레이서", "에코"]
       }
     ]
   },
@@ -24,7 +48,7 @@
     "teamName": "시그마의 중력 붕괴",
     "members": [
       {
-        "id": 3,
+        "id": 6,
         "name": "GravityFlux",
         "role": "돌격 (Tank)",
         "highestTier": "그랜드마스터",
@@ -32,7 +56,7 @@
         "mostChampions": ["시그마", "라인하르트"]
       },
       {
-        "id": 4,
+        "id": 7,
         "name": "MercyMain",
         "role": "지원 (Support)",
         "highestTier": "플래티넘",
