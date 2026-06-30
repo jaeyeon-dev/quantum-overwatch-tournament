@@ -82,7 +82,7 @@ export default function Home() {
           <section className="bg-slate-800 p-8 rounded-2xl border border-slate-700 space-y-6">
             <div>
               <h2 className="text-xl font-bold mb-2 text-indigo-300">👋 대회 개요</h2>
-              <p className="text-slate-300 leading-relaxed">본 대회는 내부 역량 강화 및 친목 도모를 위한 e스포츠 대회입니다. 공정한 경기 진행을 위해 아래 규칙을 준수해 주세요.</p>
+              <p className="text-slate-300 leading-relaxed">본 대회는 내부 역량 강화 및 친목 도모를 위한 e스포츠 대회입니다. 공정한 경기 진행을 위해 대회 가이드를 준수해 주세요.</p>
             </div>
             <hr className="border-slate-700" />
             {/* 2. 대회 일정 */}
